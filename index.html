@@ -208,13 +208,14 @@
         <!-- Form -->
         <div class="form-wrapper">
           <h2 class="form-heading">Talk to Me</h2>
-          <form action="" class="contact-form center">
+          <form action="POST" class="contact-form center" data-netlify="true">
             <input
               type="text"
               class="contact-form-input"
               placeholder="Name"
               id="name"
               autocomplete="off"
+              name="name"
             />
             <p class="message">Error Message</p>
             <input
@@ -223,6 +224,7 @@
               placeholder="Email"
               id="email"
               autocomplete="off"
+              name="email"
             />
             <p class="message">Error Message</p>
             <input
@@ -231,6 +233,7 @@
               placeholder="Subject"
               id="subject"
               autocomplete="off"
+              name="subject"
             />
             <p class="message">Error Message</p>
             <textarea
@@ -238,6 +241,7 @@
               placeholder="Message"
               id="message"
               autocomplete="off"
+              name="message"
             ></textarea>
             <p class="message">Error Message</p>
             <input type="submit" class="form-submit-btn" value="SendRequest" />

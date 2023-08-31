@@ -446,15 +446,19 @@ const checkEmail = (input) => {
   }
 };
 
-form.addEventListener("submit", e => {
-  e.preventDefault();
-
+form.addEventListener("submit", (e) => {
   checkLength(userName, 2);
   checkLength(userSubject, 2);
   checkLength(userMessage, 10);
   checkEmail(email);
 
   checkRequiredFields([userName, userEmail, userSubject, userMessage]);
+
+  const notValid = Array.from(messages).find((message) => {
+    return message.classList.contains("error")
+  });
+
+  notValid && e.preventDefault()
 
 });
 
