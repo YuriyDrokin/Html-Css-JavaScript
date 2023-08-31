@@ -402,28 +402,28 @@ setInterval(() => {
 
 /* End of SEction 5*/
 /* Form of Validation*/
+// Form Validation
 const form = document.querySelector(".contact-form");
-const userName = document.getElementById("name");
-const userEmail = document.getElementById("email");
-const userSubject = document.getElementById("subject");
-const userMessage = document.getElementById("message");
+const username = document.getElementById("name");
+const email = document.getElementById("email");
+const subject = document.getElementById("subject");
+const message = document.getElementById("message");
 const messages = document.querySelectorAll(".message");
 
 const error = (input, message) => {
   input.nextElementSibling.classList.add("error");
   input.nextElementSibling.textContent = message;
-}
+};
 
 const success = (input) => {
-  input.nextElementSibling.classList.remove("error")
-}
+  input.nextElementSibling.classList.remove("error");
+};
 
 const checkRequiredFields = (inputArr) => {
-  inputArr.forEach(input => {
+  inputArr.forEach((input) => {
     if (input.value.trim() === "") {
       error(input, `${input.id} is required`);
     }
-
   });
 };
 
@@ -436,10 +436,10 @@ const checkLength = (input, min) => {
 };
 
 const checkEmail = (input) => {
-  const regExValid =
+  const regEx =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  if (regExValid.test(input.value.trim())) {
+  if (regEx.test(input.value.trim())) {
     success(input);
   } else {
     error(input, "Email is not valid");
@@ -447,19 +447,17 @@ const checkEmail = (input) => {
 };
 
 form.addEventListener("submit", (e) => {
-  checkLength(userName, 2);
-  checkLength(userSubject, 2);
-  checkLength(userMessage, 10);
+  checkLength(username, 2);
+  checkLength(subject, 2);
+  checkLength(message, 10);
   checkEmail(email);
-
-  checkRequiredFields([userName, userEmail, userSubject, userMessage]);
+  checkRequiredFields([username, email, subject, message]);
 
   const notValid = Array.from(messages).find((message) => {
-    return message.classList.contains("error")
+    return message.classList.contains("error");
   });
 
-  notValid && e.preventDefault()
-
+  notValid && e.preventDefault();
 });
 
 /* End of Form of Validatiob*/
